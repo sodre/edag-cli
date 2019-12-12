@@ -1,4 +1,4 @@
-name: Black and Flake8
+name: Black & Flake8 enforcer
 
 on: [push]
 
@@ -10,5 +10,6 @@ jobs:
       - uses: actions/checkout@master
       - name: Setup Python
         uses: actions/setup-python@v1.1.1
-      - run: pip install black
-      - run: black --check edag tests
+      - run: pip install black flake8
+      - run: black --check .
+      - run: flake8 .
