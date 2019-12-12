@@ -21,5 +21,4 @@ jobs:
           conda-channels: anaconda, conda-forge
       - run: conda init bash
       - run: conda env create .
-      - run: source activate edag-cli-dev
-      - run: make test
+      - run: source activate edag-cli-dev && make test
