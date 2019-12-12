@@ -1,0 +1,17 @@
+name: Black and Flake8
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Python ${{ matrix.python-version }} example
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup conda
+        uses: s-weigand/setup-conda@master
+        with:
+          update-conda: true
+          conda-channels: anaconda, conda-forge
+      - run: pip install black
+      - run: black --check edag tests
