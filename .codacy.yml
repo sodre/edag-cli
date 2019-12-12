@@ -1,0 +1,8 @@
+---
+exclude_paths:
+  - 'edagcli/_version.py'
+  - 'tests/**/*'
+  - 'tests/*'
+  - 'benchmarks/**/*'
+  - 'setup.py'
+  - 'versioneer.py'
