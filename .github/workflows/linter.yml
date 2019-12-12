@@ -5,13 +5,10 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Python ${{ matrix.python-version }} example
+    name: Python 3.7
     steps:
       - uses: actions/checkout@master
-      - name: Setup conda
-        uses: s-weigand/setup-conda@master
-        with:
-          update-conda: true
-          conda-channels: anaconda, conda-forge
+      - name: Setup Python
+        uses: actions/setup-python@v1.1.1
       - run: pip install black
       - run: black --check edag tests
