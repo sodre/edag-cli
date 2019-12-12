@@ -8,5 +8,12 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-python@v1.1.1
       - run: pip install black flake8
+      - uses: actions/cache@v1
+        id: cache
+        with:
+          path: ~/.cache/pip
+          key: ${{  runner.os }}-${{ hashFiles('.github/workflows/black-and-flake8.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
       - run: black --check .
       - run: flake8 .
