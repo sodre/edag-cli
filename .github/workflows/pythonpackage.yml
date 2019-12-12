@@ -18,8 +18,8 @@ jobs:
         uses: s-weigand/setup-conda@master
         with:
           update-conda: true
-          python-version: ${{ matrix.python-version }}
           conda-channels: anaconda, conda-forge
+      - run: conda init bash
       - run: conda env create .
       - run: conda activate edag-cli-dev
       - run: make test
