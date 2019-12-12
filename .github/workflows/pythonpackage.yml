@@ -20,5 +20,5 @@ jobs:
           update-conda: true
           conda-channels: anaconda, conda-forge
       - run: conda init bash
-      - run: conda env create .
-      - run: source activate edag-cli-dev && make test
+      - run: conda env update -n base --file environment.yml
+      - run: make test
