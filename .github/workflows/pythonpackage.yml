@@ -7,8 +7,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-        python-version: [3.6, 3.7, 3.8]
+        os: [ubuntu-latest]
+        python-version: [3.7]
+        #os: [ubuntu-latest, windows-latest, macOS-latest]
+        #python-version: [3.6, 3.7, 3.8]
     name: Python ${{ matrix.python-version }} example
     steps:
       - uses: actions/checkout@master
@@ -18,6 +20,6 @@ jobs:
           update-conda: true
           python-version: ${{ matrix.python-version }}
           conda-channels: anaconda, conda-forge
-      - run: conda --version
       - run: conda env create .
+      - run: conda activate edag-cli-dev
       - run: make test
