@@ -2,7 +2,7 @@ name: Pip Package
 on: [push]
 jobs:
   enforcer:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
