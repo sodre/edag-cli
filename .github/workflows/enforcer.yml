@@ -19,6 +19,5 @@ jobs:
       - run: flake8 .
       - run: python setup.py test
       - run: python-codacy-coverage -r coverage.xml
-        if: secrets.CODACY_PROJECT_TOKEN != ""
         env:
           CODACY_PROJECT_TOKEN: ${{  secrets.CODACY_PROJECT_TOKEN }}
