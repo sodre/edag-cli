@@ -1,4 +1,4 @@
-name: Python package
+name: Conda package
 
 on: [push]
 
@@ -15,7 +15,9 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: s-weigand/setup-conda@master
-      - run: conda render . > rendered-meta.yaml
+      - run: |
+          conda install conda-build conda-verify
+          conda render . > rendered-meta.yaml
       - uses: actions/cache@v1
         id: conda-pkgs-cache
         with:
