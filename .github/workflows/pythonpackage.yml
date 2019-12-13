@@ -3,27 +3,7 @@ name: Python package
 on: [push]
 
 jobs:
-  conda:
-    name: Creates The Conda environment
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        python-version: [3.7]
-        #os: [ubuntu-latest, windows-latest, macOS-latest]
-        #python-version: [3.6, 3.7, 3.8]
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/cache@v1
-        id: conda-pkgs-cache
-        with:
-          path: /usr/share/miniconda
-          key: ${{  runner.os }}-conda-${{ hashFiles('environment.yml') }}
-      - uses: s-weigand/setup-conda@master
-      - run: conda env update -n base --file environment.yml
-
-  test:
-    needs: conda
+  build_and_test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -38,9 +18,27 @@ jobs:
       - uses: actions/cache@v1
         id: conda-pkgs-cache
         with:
-          path: /usr/share/miniconda
+          path: /usr/share/miniconda/pkgs
           key: ${{  runner.os }}-conda-${{ hashFiles('environment.yml') }}
-      - run: make test
+
+      - run: |
+          conda env update -n base --file environment.yml
+          conda list --export --md5 > base.condaspec
+      - name: Archive conda environment spec
+        users: actions/upload-artifact@v1
+        with:
+            name: base-${{ matrix.python-version }}.condaspec
+            path: base.condaspec
+
+      - name: Run quick make-test
+        run: make test
+
+      - name: Archive unit tests results
+        users: actions/upload-artifact@v1
+        with:
+            name: base-${{ matrix.python-version }}.condaspec
+            path: base.condaspec
+
       - run: python-codacy-coverage -r coverage.xml
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
