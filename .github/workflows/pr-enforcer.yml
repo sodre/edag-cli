@@ -9,6 +9,6 @@ jobs:
     steps:
       - uses: yogevbd/enforce-label-action@1.0.1
         env:
-          - VALID_LABELS = "bug,enhancement,chore"
-          - GITHUB_TOKEN = ${{ secrets.GITHUB_TOKEN }}
+          VALID_LABELS: "bug,enhancement,chore"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
