@@ -11,7 +11,7 @@ jobs:
         id: cache
         with:
           path: ~/.cache/pip
-          key: ${{  runner.os }}-${{ hashFiles('.github/workflows/enforcer.yml') }}
+          key: ${{  runner.os }}-${{ hashFiles('.github/workflows/enforcer.yml', 'setup.py') }}
           restore-keys: |
             ${{ runner.os }}-pip-
       - run: pip install black flake8 codacy-coverage
