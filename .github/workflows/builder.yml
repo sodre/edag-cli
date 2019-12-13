@@ -47,6 +47,7 @@ jobs:
           conda install conda-verify
           conda build --output-folder conda-bld .
       - name: Upload artifact
+        if: GITHUB_REF == 'master'
         uses: actions/upload-artifact@v1.0.0
         with:
           name: conda-packages-${{ matrix.os }}-py${{matrix.python-version}}
