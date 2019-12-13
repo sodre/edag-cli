@@ -24,3 +24,4 @@ jobs:
             ${{ runner.os }}-conda-
       - run: conda env update -n base --file environment.yml
       - run: make test
+      - run: python-codacy-coverage -r coverage.xml
