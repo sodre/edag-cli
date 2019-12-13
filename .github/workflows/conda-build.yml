@@ -1,0 +1,24 @@
+name: Python package
+
+on: [push]
+
+jobs:
+  build_and_test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.7]
+        #os: [ubuntu-latest, windows-latest, macOS-latest]
+        #python-version: [3.6, 3.7, 3.8]
+    name: Python ${{ matrix.python-version }} example
+    steps:
+      - uses: actions/checkout@master
+      - uses: s-weigand/setup-conda@master
+      - run: conda render . > rendered-meta.yaml
+      - uses: actions/cache@v1
+        id: conda-pkgs-cache
+        with:
+          path: /usr/share/miniconda/pkgs
+          key: ${{  runner.os }}-conda-${{ hashFiles('rendered-meta.yaml') }}
+      - run: conda build .
