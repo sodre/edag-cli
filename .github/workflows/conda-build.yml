@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: s-weigand/setup-conda@master
+        with:
+          python-version: ${{ matrix.python-version }}
       - run: |
           conda install conda-build conda-verify
           conda render . > rendered-meta.yaml
