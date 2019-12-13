@@ -14,12 +14,12 @@ jobs:
         #python-version: [3.6, 3.7, 3.8]
     steps:
       - uses: actions/checkout@master
-      - uses: s-weigand/setup-conda@master
       - uses: actions/cache@v1
         id: conda-pkgs-cache
         with:
           path: /usr/share/miniconda
           key: ${{  runner.os }}-conda-${{ hashFiles('environment.yml') }}
+      - uses: s-weigand/setup-conda@master
       - run: conda env update -n base --file environment.yml
 
   test:
@@ -39,7 +39,7 @@ jobs:
         id: conda-pkgs-cache
         with:
           path: /usr/share/miniconda
-          key: ${{  runner.os }}-${{ hashFiles('environment.yml') }}
+          key: ${{  runner.os }}-conda-${{ hashFiles('environment.yml') }}
       - run: make test
       - run: python-codacy-coverage -r coverage.xml
         env:
