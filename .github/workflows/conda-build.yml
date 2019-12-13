@@ -24,6 +24,6 @@ jobs:
       - run: conda build --output-folder conda-bld
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
-          with:
-            name: conda-packages-${{matrix.python-version}}
-            path: conda-bld
+        with:
+          name: conda-packages-${{matrix.python-version}}
+          path: conda-bld
