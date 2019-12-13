@@ -3,7 +3,15 @@ name: PR Enforcer
 on: [pull_request]
 
 jobs:
+  labeler:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: TimonVS/pr-labeler-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   labels:
+    needs: [labeler]
     runs-on: ubuntu-latest
     name: Enforce PR Label
     steps:
