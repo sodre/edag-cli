@@ -79,7 +79,7 @@ Ready to contribute? Here's how to set up `edag-cli` for local development.
 5. When you're done making changes, check that your changes pass black, flake8 and coverage
    tests::
 
-    $ make format lint tests
+    $ make format lint test
 
    All the dependencies should already be included in your conda environment.
 
