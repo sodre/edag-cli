@@ -1,0 +1,55 @@
+name: Builder
+on: [push]
+jobs:
+  pip-build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.7]
+    name: pip py${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-python@v1.1.1
+      - uses: actions/cache@v1
+        id: cache
+        with:
+          path: ~/.cache/pip
+          key: ${{  runner.os }}-pip-${{ hashFiles('setup.py') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - run: make dist
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: pip-packages-ubuntu-latest
+          path: dist
+
+  conda-build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.7]
+    name: conda py${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: s-weigand/setup-conda@master
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: |
+          conda install conda-build
+          conda render . > rendered-meta.yaml
+      - uses: actions/cache@v1
+        id: conda-pkgs-cache
+        with:
+          path: /usr/share/miniconda/pkgs
+          key: ${{  runner.os }}-conda-py${{ matrix.python-version }}-${{ hashFiles('rendered-meta.yaml') }}
+      - run: |
+          conda install conda-verify
+          conda build --output-folder conda-bld .
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: conda-packages-${{ matrix.os }}-py${{matrix.python-version}}
+          path: conda-bld
