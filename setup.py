@@ -14,6 +14,7 @@ with open("HISTORY.rst") as history_file:
 requirements = [
     "Click>=7.0",
     "click-plugins",
+    "entrypoints",
 ]
 
 setup_requirements = [
