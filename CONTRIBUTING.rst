@@ -68,7 +68,7 @@ Ready to contribute? Here's how to set up `edag-cli` for local development.
 
     $ cd edag-cli/
     $ conda env create .
-    $ python setup.py develop
+    $ pip install -e . --no-deps
 
 4. Create a branch for local development, use the ``f-``, ``i-`` or ``chore-`` prefixes to auto-label your PR::
 
