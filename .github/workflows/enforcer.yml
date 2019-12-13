@@ -11,7 +11,7 @@ jobs:
         id: cache
         with:
           path: ~/.cache/pip
-          key: ${{  runner.os }}-${{ hashFiles('setup.py') }}
+          key: ${{  runner.os }}-pip-${{ hashFiles('setup.py') }}
           restore-keys: |
             ${{ runner.os }}-pip-
       - run: pip install black flake8 codacy-coverage
