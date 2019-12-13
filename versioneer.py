@@ -1,4 +1,4 @@
-
+# fmt: off
 # Version: 0.18
 
 """The Versioneer - like a rocketeer, but for versions.
@@ -1820,3 +1820,4 @@ if __name__ == "__main__":
         errors += scan_setup_py()
         if errors:
             sys.exit(1)
+# fmt: on

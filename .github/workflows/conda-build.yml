@@ -1,0 +1,29 @@
+name: Conda package
+on: [push]
+jobs:
+  conda-build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.7]
+    name: Python ${{ matrix.python-version }} example
+    steps:
+      - uses: actions/checkout@master
+      - uses: s-weigand/setup-conda@master
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: |
+          conda install conda-build conda-verify
+          conda render . > rendered-meta.yaml
+      - uses: actions/cache@v1
+        id: conda-pkgs-cache
+        with:
+          path: /usr/share/miniconda/pkgs
+          key: ${{  runner.os }}-conda-${{ matrix.python-version }}-${{ hashFiles('rendered-meta.yaml') }}
+      - run: conda build --output-folder conda-bld .
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: conda-packages-${{ matrix.os }}${{matrix.python-version}}
+          path: conda-bld
