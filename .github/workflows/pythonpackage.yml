@@ -15,5 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: s-weigand/setup-conda@master
+      - uses: actions/cache@v1
+        id: conda-pkgs-cache
+        with:
+          path: /usr/share/miniconda/pkgs
+          key: ${{  runner.os }}-${{ hashFiles('environment.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-conda-
       - run: conda env update -n base --file environment.yml
       - run: make test
