@@ -17,7 +17,7 @@ jobs:
       - uses: actions/cache@v1
         id: conda-pkgs-cache
         with:
-          path: /usr/share/miniconda/pkgs
+          path: /usr/share/miniconda
           key: ${{  runner.os }}-conda-${{ hashFiles('environment.yml') }}
       - run: conda env update -n base --file environment.yml
 
@@ -37,7 +37,7 @@ jobs:
       - uses: actions/cache@v1
         id: conda-pkgs-cache
         with:
-          path: /usr/share/miniconda/pkgs
+          path: /usr/share/miniconda
           key: ${{  runner.os }}-${{ hashFiles('environment.yml') }}
       - run: make test
       - run: python-codacy-coverage -r coverage.xml
