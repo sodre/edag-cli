@@ -18,9 +18,9 @@ jobs:
           key: ${{  matrix.os }}-pip-${{ hashFiles('setup.py') }}
           restore-keys: |
             ${{ matrix.os }}-pip-
-     - run: make dist
-     - name: Upload artifact
-       uses: actions/upload-artifact@v1.0.0
-       with:
-         name: pip-packages-ubuntu-latest
-         path: dist
+      - run: make dist
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: pip-packages-ubuntu-latest
+          path: dist
