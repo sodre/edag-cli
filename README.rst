@@ -16,7 +16,7 @@ EDAG Command Line Interface
 
 
 
-.. image:: https://pyup.io/repos/github/sodre/edag-cli/shield.svg
+.. image:: https://pyup.io/repos/github/sodre/edag-cli/shield.svg&style=flat-square
    :target: https://pyup.io/repos/github/sodre/edag-cli/
    :alt: Updates
 
