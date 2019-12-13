@@ -4,6 +4,7 @@ on: [pull_request]
 
 jobs:
   labels:
+    runs-on: ubuntu-latest
     name: Enforce PR Label
     steps:
       - uses: yogevbd/enforce-label-action@1.0.1
