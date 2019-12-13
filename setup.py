@@ -18,6 +18,7 @@ requirements = [
 ]
 
 setup_requirements = [
+    "wheel",
     "pytest-runner",
 ]
 

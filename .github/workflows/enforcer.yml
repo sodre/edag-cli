@@ -21,4 +21,3 @@ jobs:
       - run: python-codacy-coverage -r coverage.xml
         env:
           CODACY_PROJECT_TOKEN: ${{  secrets.CODACY_PROJECT_TOKEN }}
-      - run: make dist
