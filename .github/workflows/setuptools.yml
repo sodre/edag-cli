@@ -7,7 +7,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         python-version: [3.7]
-    name: Enforcer
+    name: Python ${{ matrix.python-version }}
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-python@v1.1.1
@@ -15,9 +15,9 @@ jobs:
         id: cache
         with:
           path: ~/.cache/pip
-          key: ${{  matrix.os }}-pip-${{ hashFiles('setup.py') }}
+          key: ${{  runner.os }}-pip-${{ hashFiles('setup.py') }}
           restore-keys: |
-            ${{ matrix.os }}-pip-
+            ${{ runner.os }}-pip-
       - run: make dist
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
