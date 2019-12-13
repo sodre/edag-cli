@@ -1,5 +1,5 @@
 name: builder
-on: [push]
+on: [push, pull_request]
 jobs:
   setuptools-build:
     strategy:
@@ -22,7 +22,6 @@ jobs:
         with:
           name: pip-packages-ubuntu-latest
           path: dist
-
   conda-build:
     strategy:
       matrix:
@@ -46,11 +45,14 @@ jobs:
       - run: |
           conda install conda-verify
           conda build --output-folder conda-bld .
-      - name: Upload artifact
-        if: github.ref == 'master'
+      - uses: jwalton/gh-find-current-pr@v1
+        id: find_pr
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload PRs to Anaconda.org
         uses: actions/upload-artifact@v1.0.0
         with:
-          name: conda-packages-${{ matrix.os }}-py${{matrix.python-version}}
+          name: conda-packages-${{ matrix.os }}-py${{matrix.python-version}}-${{ steps.find_pr.outputs.pr}}
           path: conda-bld
 
 #TODO: Add Anaconda Upload option
