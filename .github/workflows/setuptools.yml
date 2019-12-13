@@ -1,4 +1,4 @@
-name: Wheel Builder
+name: Pip Package
 on: [push]
 jobs:
   enforcer:
@@ -15,9 +15,9 @@ jobs:
         id: cache
         with:
           path: ~/.cache/pip
-          key: ${{  runner.os }}-pip-${{ hashFiles('setup.py') }}
+          key: ${{  matrix.os }}-pip-${{ hashFiles('setup.py') }}
           restore-keys: |
-            ${{ runner.os }}-pip-
+            ${{ matrix.os }}-pip-
      - run: make dist
      - name: Upload artifact
        uses: actions/upload-artifact@v1.0.0
