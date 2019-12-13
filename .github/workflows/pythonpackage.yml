@@ -3,7 +3,26 @@ name: Python package
 on: [push]
 
 jobs:
+  conda:
+    name: Creates The Conda environment
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.7]
+        #os: [ubuntu-latest, windows-latest, macOS-latest]
+        #python-version: [3.6, 3.7, 3.8]
+    steps:
+      - uses: s-weigand/setup-conda@master
+      - uses: actions/cache@v1
+        id: conda-pkgs-cache
+        with:
+          path: /usr/share/miniconda/pkgs
+          key: ${{  runner.os }}-conda-${{ hashFiles('environment.yml') }}
+      - run: conda env update -n base --file environment.yml
+
   test:
+    needs: conda
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -20,9 +39,6 @@ jobs:
         with:
           path: /usr/share/miniconda/pkgs
           key: ${{  runner.os }}-${{ hashFiles('environment.yml') }}
-          restore-keys: |
-            ${{ runner.os }}-conda-
-      - run: conda env update -n base --file environment.yml
       - run: make test
       - run: python-codacy-coverage -r coverage.xml
         env:
