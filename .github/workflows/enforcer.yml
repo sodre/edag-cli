@@ -1,0 +1,23 @@
+name: Black & Flake8 & Coverage
+on: [push]
+jobs:
+  enforcer:
+    runs-on: ubuntu-latest
+    name: Enforcer
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-python@v1.1.1
+      - uses: actions/cache@v1
+        id: cache
+        with:
+          path: ~/.cache/pip
+          key: ${{  runner.os }}-pip-${{ hashFiles('setup.py') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - run: pip install black flake8 codacy-coverage
+      - run: black --check .
+      - run: flake8 .
+      - run: python setup.py test
+      - run: python-codacy-coverage -r coverage.xml
+        env:
+          CODACY_PROJECT_TOKEN: ${{  secrets.CODACY_PROJECT_TOKEN }}

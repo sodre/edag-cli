@@ -26,7 +26,7 @@ BROWSER := python -c "$$BROWSER_PYSCRIPT"
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-init:
+init: ## Initializes the development environment
 	conda env create --force .
 
 clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
@@ -51,10 +51,10 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 
 format:  ## You can use any style you want, as long as it is black
-	black edag tests
+	black .
 
 lint: ## check style with flake8
-	flake8 edag tests
+	flake8 .
 
 test: ## run tests quickly with the default Python
 	pytest
@@ -82,7 +82,7 @@ servedocs: docs ## compile the docs watching for changes
 release: dist ## package and upload a release
 	twine upload dist/*
 
-dist: clean format lint ## builds source and wheel package
+dist: clean ## builds source and wheel package
 	python setup.py sdist
 	python setup.py bdist_wheel
 	ls -l dist
