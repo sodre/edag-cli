@@ -22,6 +22,7 @@ setup_requirements = [
 
 test_requirements = [
     "pytest>=3",
+    "pytest-cov",
 ]
 
 setup(
@@ -33,6 +34,7 @@ setup(
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
+        "License :: Other/Proprietary License",
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.5",
@@ -49,6 +51,7 @@ setup(
     },
     # fmt: on
     install_requires=requirements,
+    license="Proprietary",
     long_description=readme + "\n\n" + history,
     include_package_data=True,
     keywords="cli edag",

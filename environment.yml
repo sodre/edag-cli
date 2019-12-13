@@ -20,5 +20,4 @@ dependencies:
 - sphinx
 - twine
 - wheel
-- pip:
-  - codacy-coverage
+

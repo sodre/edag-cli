@@ -1,7 +1,7 @@
 name: Black & Flake8
 on: [push]
 jobs:
-  build:
+  linter:
     runs-on: ubuntu-latest
     name: Enforcer
     steps:
