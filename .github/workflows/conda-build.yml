@@ -25,5 +25,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
         with:
-          name: conda-packages-${{matrix.python-version}}
+          name: conda-packages-${{ matrix.os }}${{matrix.python-version}}
           path: conda-bld
