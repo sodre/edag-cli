@@ -2,11 +2,11 @@
 EDAG Command Line Interface
 ===========================
 
-.. image:: https://img.shields.io/codacy/grade/CODACY_PROJECT_ID_HERE?logo=codacy&style=flat-square
+.. image:: https://img.shields.io/codacy/grade/24d170f2b8504dbebf3031199c15ad38?logo=codacy&style=flat-square
    :target: https://www.codacy.com/app/elasticdag/edag-cli
    :alt: Codacy Badge
 
-.. image:: https://img.shields.io/codacy/coverage/CODACY_PROJECT_ID_HERE?logo=codacy&style=flat-square
+.. image:: https://img.shields.io/codacy/coverage/24d170f2b8504dbebf3031199c15ad38?logo=codacy&style=flat-square
    :target: https://www.codacy.com/app/elasticdag/edag-cli
    :alt: Codacy Badge
 
@@ -16,7 +16,7 @@ EDAG Command Line Interface
 
 
 
-.. image:: https://pyup.io/repos/github/sodre/edag-cli/shield.svg
+.. image:: https://pyup.io/repos/github/sodre/edag-cli/shield.svg?logo=codacy&style=flat-square
    :target: https://pyup.io/repos/github/sodre/edag-cli/
    :alt: Updates
 
