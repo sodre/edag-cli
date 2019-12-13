@@ -27,7 +27,7 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
         python-version: [3.6, 3.7, 3.8]
     runs-on: ${{  matrix.os }}
-    name: '${{ runner.os }} Python ${{ matrix.python-version }}'
+    name: ${{ matrix.os }} Python ${{ matrix.python-version }}
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-python@v1.1.1
@@ -37,5 +37,5 @@ jobs:
         id: cache
         with:
           path: ~/.cache/pip
-          key: ${{  runner.os }}-${{ matrix.python-version }}-pip-${{ hashFiles('setup.py') }}
+          key: ${{  matrix.os }}-${{ matrix.python-version }}-pip-${{ hashFiles('setup.py') }}
       - run: python setup.py test
