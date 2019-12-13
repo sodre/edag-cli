@@ -20,5 +20,5 @@ jobs:
         id: conda-pkgs-cache
         with:
           path: /usr/share/miniconda/pkgs
-          key: ${{  runner.os }}-conda-${{ hashFiles('rendered-meta.yaml') }}
-      - run: conda build --python ${{ matrix.python-version }} .
+          key: ${{  runner.os }}-conda-${{ matrix.python-version }}${{ hashFiles('rendered-meta.yaml') }}
+      - run: conda build .
