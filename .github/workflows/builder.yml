@@ -30,6 +30,7 @@ jobs:
         python-version: [3.7]
     name: conda py${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
+    if: github.event.pull_request.assignee != null
     steps:
       - uses: actions/checkout@master
       - uses: s-weigand/setup-conda@master
