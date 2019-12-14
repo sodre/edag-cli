@@ -38,7 +38,7 @@ jobs:
         python-version: [3.7]
     name: setuptools py${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
-    if: github.event.action == 'preleased' || github.event.action == 'released'
+    if: github.event.action == 'published'
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-python@v1.1.1
