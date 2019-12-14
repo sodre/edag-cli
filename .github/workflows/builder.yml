@@ -17,10 +17,11 @@ jobs:
           path: .eggs
           key: ${{  matrix.os }}-${{ matrix.python-version }}-eggs-${{ hashFiles('setup.py') }}
       - run: make dist
-      - name: Upload artifact
+      - name: Generate Artifact if PR is assigned.
+        if: github.event.pull_request.assignee != null
         uses: actions/upload-artifact@v1.0.0
         with:
-          name: pip-packages-ubuntu-latest
+          name: setuptools-${{ matrix.os }}-${{ matrix.python-version }}
           path: dist
   conda-build:
     strategy:
