@@ -11,6 +11,7 @@ with open("README.rst") as readme_file:
 with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
+# The requirements section should be kept in sync with the environment.yml file
 requirements = [
     "Click>=7.0",
     "click-plugins",

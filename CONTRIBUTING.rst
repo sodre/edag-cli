@@ -64,32 +64,31 @@ Ready to contribute? Here's how to set up `edag-cli` for local development.
 
     $ git clone git@github.com:your_name_here/edag-cli.git
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+3. Install your local copy into a conda environment. Assuming you have conda installed, this is how you set up your fork for local development::
 
-    $ mkvirtualenv edag-cli
     $ cd edag-cli/
-    $ python setup.py develop
+    $ make init
+    $ conda activate edag-cli-dev
+    $ pip install -e . --no-deps
 
-4. Create a branch for local development::
+4. Create a branch for local development, use the ``f-``, ``i-`` or ``chore-`` prefixes to auto-label your PR::
 
-    $ git checkout -b name-of-your-bugfix-or-feature
+    $ git checkout -b (f|i|chore)-name-of-your-contribution
 
    Now you can make your changes locally.
 
-5. When you're done making changes, check that your changes pass flake8 and the
-   tests, including testing other Python versions with tox::
+5. When you're done making changes, check that your changes pass black, flake8 and coverage
+   tests::
 
-    $ flake8 cli tests
-    $ python setup.py test or pytest
-    $ tox
+    $ make format lint test
 
-   To get flake8 and tox, just pip install them into your virtualenv.
+   All the dependencies should already be included in your conda environment.
 
 6. Commit your changes and push your branch to GitHub::
 
     $ git add .
     $ git commit -m "Your detailed description of your changes."
-    $ git push origin name-of-your-bugfix-or-feature
+    $ git push origin (f|i|chore)-name-of-your-contribution
 
 7. Submit a pull request through the GitHub website.
 
@@ -111,8 +110,7 @@ Tips
 
 To run a subset of tests::
 
-$ pytest tests.test_cli
-
+    $ pytest tests.test_cli
 
 Deploying
 ---------

@@ -1,0 +1,47 @@
+name: detoxify
+on: [push]
+jobs:
+  enforcer:
+    needs: [ serverless-tox ]
+    runs-on: ubuntu-latest
+    name: black, flake8 & coverage
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-python@v1.1.1
+        with:
+          python-version: 3.8
+      - uses: actions/cache@v1
+        id: cache
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-py3.8-pip-${{ hashFiles('setup.py') }}
+      - run: pip install black flake8 codacy-coverage
+      - run: black --check .
+      - run: flake8 .
+      # TODO: This call should be to finalize the coverage report only.
+      - run: python setup.py test
+      - run: python-codacy-coverage -r coverage.xml
+        env:
+          CODACY_PROJECT_TOKEN: ${{  secrets.CODACY_PROJECT_TOKEN }}
+  serverless-tox:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        python-version: [3.6, 3.7, 3.8]
+    runs-on: ${{  matrix.os }}
+    name: ${{ matrix.os }}-py${{ matrix.python-version }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-python@v1.1.1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/cache@v1
+        id: cache
+        with:
+          path: .eggs
+          key: ${{  matrix.os }}-${{ matrix.python-version }}-eggs-${{ hashFiles('setup.py') }}
+      - run: python setup.py test
+      # TODO: This call should be to send a partial coverage report
+      # - run: python-codacy-coverage -r coverage.xml
+      #   env:
+      #     CODACY_PROJECT_TOKEN: ${{  secrets.CODACY_PROJECT_TOKEN }}

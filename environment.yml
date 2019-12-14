@@ -3,21 +3,32 @@ channels:
 - conda-forge
 - defaults
 dependencies:
+#
+# Dependencies must be kept in sync with setup.py
 - python
-- entrypoints
+# Setup Requirements
+- pytest-runner 5
+- wheel
+
+# Install Requirements
 - click 7
 - click-plugins
+- entrypoints
 
-# Development / Test / Docs
+# Test Requirements
 - black
-- bump2version==0.5.11
 - coverage
 - flake8==3.7.8
-- pip
 - pytest 4.6
 - pytest-cov
-- pytest-runner 5
+
+# Documentation Requirements
 - sphinx
+- watchdog
+
+# Other Requirements
+- bump2version==0.5.11
+- pip
 - twine
-- wheel
+
 
