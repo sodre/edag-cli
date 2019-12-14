@@ -1,7 +1,7 @@
 name: release publisher
 on:
   release:
-    types: [published, unpublished]
+    types: [published]
 jobs:
   one:
     runs-on: ubuntu-16.04
