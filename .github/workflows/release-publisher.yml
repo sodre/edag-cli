@@ -1,5 +1,7 @@
-name: releaser
-on: [release]
+name: release publisher
+on:
+  release:
+    types: [published, unpublished]
 jobs:
   one:
     runs-on: ubuntu-16.04
@@ -28,3 +30,26 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
+
+  setuptools-publish:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.7]
+    name: setuptools py${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    if: github.event.action == 'preleased' || github.event.action == 'released'
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-python@v1.1.1
+      - uses: actions/cache@v1
+        id: cache
+        with:
+          path: .eggs
+          key: ${{  matrix.os }}-${{ matrix.python-version }}-eggs-${{ hashFiles('setup.py') }}
+      - run: make dist
+      - name: Upload assets to a Release
+        uses: AButler/upload-release-assets@v2.0
+        with:
+          files: dist/*
+          repo-token:  ${{ secrets.GITHUB_TOKEN }}
