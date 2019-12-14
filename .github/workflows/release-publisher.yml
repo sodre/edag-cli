@@ -68,7 +68,7 @@ jobs:
       - uses: s-weigand/setup-conda@master
         with:
           python-version: ${{ matrix.python-version }}
-          conda-channels: anaconda conda-forge $elasticdag
+          conda-channels: anaconda, conda-forge, elasticdag
       - run: conda config --set anaconda_upload true
       - run: conda install conda-build conda-verify anaconda-client
       - name: conda build and upload
