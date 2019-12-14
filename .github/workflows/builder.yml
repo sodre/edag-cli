@@ -36,6 +36,7 @@ jobs:
       - uses: s-weigand/setup-conda@master
         with:
           python-version: ${{ matrix.python-version }}
+          conda-channels: anaconda conda-forge $elasticdag
       - run: |
           conda install conda-build
           conda render . > rendered-meta.yaml
@@ -46,5 +47,3 @@ jobs:
           key: ${{  runner.os }}-conda-py${{ matrix.python-version }}-${{ hashFiles('rendered-meta.yaml') }}
       - run: conda install conda-verify
       - run: conda build --output-folder conda-bld .
-
-#TODO: Add Anaconda Upload option

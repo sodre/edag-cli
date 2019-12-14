@@ -8,19 +8,16 @@ import versioneer
 with open("README.rst") as readme_file:
     readme = readme_file.read()
 
-with open("HISTORY.rst") as history_file:
-    history = history_file.read()
-
 # The requirements section should be kept in sync with the environment.yml file
 requirements = [
-    "Click>=7.0",
+    "click>=7.0",
     "click-plugins",
     "entrypoints",
 ]
 
 setup_requirements = [
-    "wheel",
     "pytest-runner",
+    "wheel",
 ]
 
 test_requirements = [
@@ -33,14 +30,13 @@ setup(
     author_email="sodre@elasticdag.com",
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
-    python_requires=">=3.5",
+    python_requires=">=3.6",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
         "License :: Other/Proprietary License",
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
@@ -55,7 +51,8 @@ setup(
     # fmt: on
     install_requires=requirements,
     license="Proprietary",
-    long_description=readme + "\n\n" + history,
+    long_description=readme,
+    long_description_content_type="text/x-rst",
     include_package_data=True,
     keywords="cli edag",
     name="edag-cli",

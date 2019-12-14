@@ -10,8 +10,6 @@ Welcome to EDAG Command Line Interface's documentation!
    usage
    modules
    contributing
-   authors
-   history
 
 Indices and tables
 ==================
