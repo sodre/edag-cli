@@ -42,14 +42,17 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-python@v1.1.1
-      - uses: actions/cache@v1
-        id: cache
-        with:
-          path: .eggs
-          key: ${{  matrix.os }}-${{ matrix.python-version }}-eggs-${{ hashFiles('setup.py') }}
       - run: make dist
-      - name: Upload assets to a Release
+      - name: Upload assets to this release
         uses: AButler/upload-release-assets@v2.0
         with:
           files: dist/*
           repo-token:  ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload release to pypi.org
+        if: github.event.repository.private == false
+        env:
+            TWINE_USERNAME: __token__
+            TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run:
+            pip install twine
+            twine upload dist/*
