@@ -59,7 +59,6 @@ jobs:
   conda-publish:
     strategy:
       matrix:
-
         os: [ubuntu-latest]
         python-version: [3.7]
     name: conda py${{ matrix.python-version }}
@@ -74,6 +73,7 @@ jobs:
       - run: conda install conda-build conda-verify anaconda-client
       - run: |
           conda build --output-folder conda-bld \
-            --user $elasticdag.
+            --user $elasticdag \
+            conda.recipe
         env:
           ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_API_TOKEN }}
