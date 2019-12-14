@@ -42,8 +42,7 @@ jobs:
         with:
           path: /usr/share/miniconda/pkgs
           key: ${{  runner.os }}-conda-py${{ matrix.python-version }}-${{ hashFiles('rendered-meta.yaml') }}
-      - run: |
-          conda install conda-verify
-          conda build --output-folder conda-bld .
+      - run: conda install conda-verify
+      - run: conda build --output-folder conda-bld .
 
 #TODO: Add Anaconda Upload option
