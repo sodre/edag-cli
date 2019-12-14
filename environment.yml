@@ -1,34 +1,33 @@
 name: edag-cli-dev
 channels:
-- conda-forge
-- defaults
+    - elasticdag
+    - conda-forge
+    - defaults
 dependencies:
-#
-# Dependencies must be kept in sync with setup.py
-- python
-# Setup Requirements
-- pytest-runner 5
-- wheel
+    - python
+    - pip
 
-# Install Requirements
-- click 7
-- click-plugins
-- entrypoints
+    # Setup Requirements (setup.py:setup_requirements)
+    - pytest-runner 5
+    - wheel
 
-# Test Requirements
-- black
-- coverage
-- flake8==3.7.8
-- pytest 4.6
-- pytest-cov
+    # Install Requirements (setup.py:requirements)
+    - click >=7.0
+    - click-plugins
+    - entrypoints
 
-# Documentation Requirements
-- sphinx
-- watchdog
+    # Test Requirements (setup.py:test_requirements)
+    - pytest >=3
+    - pytest-cov
 
-# Other Requirements
-- bump2version==0.5.11
-- pip
-- twine
+    # Documentation Requirements
+    - sphinx
+    - watchdog
+
+    # Dev Workflow requirements
+    - black
+    - flake8
+    - bump2version==0.5.11
+    - twine
 
 
