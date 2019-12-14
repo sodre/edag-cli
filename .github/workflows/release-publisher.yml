@@ -63,17 +63,18 @@ jobs:
         python-version: [3.7]
     name: conda py${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
-    if: github.event.pull_request.assignee != null
     steps:
       - uses: actions/checkout@master
       - uses: s-weigand/setup-conda@master
         with:
           python-version: ${{ matrix.python-version }}
           conda-channels: anaconda conda-forge $elasticdag
+      - run: conda config --set anaconda_upload true
       - run: conda install conda-build conda-verify anaconda-client
-      - run: |
+      - name: conda build and upload
+        run: |
           conda build --output-folder conda-bld \
-            --user $elasticdag \
+            --user elasticdag \
             conda.recipe
         env:
           ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_API_TOKEN }}
