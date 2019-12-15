@@ -37,6 +37,6 @@ jobs:
       - run: python setup.py test
       - uses: codecov/codecov-action@v1
         with:
+          name: ${{  matrix.os }}-${{ matrix.python-version }}
           token: ${{ secrets.CODECOV_TOKEN }}
-          flags: unit-tests
           fail_ci_if_error: true
