@@ -9,6 +9,7 @@ dependencies:
 
     # Setup Requirements (setup.py:setup_requirements)
     - pytest-runner 5
+    - setuptools_scm
     - wheel
 
     # Install Requirements (setup.py:requirements)
