@@ -17,11 +17,6 @@ jobs:
       - run: pip install black flake8 codacy-coverage
       - run: black --check .
       - run: flake8
-      # TODO: This call should be to finalize the coverage report only.
-      - run: python setup.py test
-      - run: python-codacy-coverage -r coverage.xml
-        env:
-          CODACY_PROJECT_TOKEN: ${{  secrets.CODACY_PROJECT_TOKEN }}
   serverless-tox:
     strategy:
       matrix:
@@ -40,7 +35,7 @@ jobs:
           path: .eggs
           key: ${{  matrix.os }}-${{ matrix.python-version }}-eggs-${{ hashFiles('setup.py') }}
       - run: python setup.py test
-      # TODO: This call should be to send a partial coverage report
-      # - run: python-codacy-coverage -r coverage.xml
-      #   env:
-      #     CODACY_PROJECT_TOKEN: ${{  secrets.CODACY_PROJECT_TOKEN }}
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: unit-tests
