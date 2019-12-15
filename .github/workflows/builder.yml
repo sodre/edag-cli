@@ -38,7 +38,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           conda-channels: anaconda conda-forge $elasticdag
       - run: |
-          conda install conda-build
+          conda install conda-build setuptools_scm
           conda render . > rendered-meta.yaml
       - uses: actions/cache@v1
         id: conda-pkgs-cache
