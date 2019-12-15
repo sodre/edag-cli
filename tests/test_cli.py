@@ -5,7 +5,6 @@
 import pytest
 from click.testing import CliRunner
 from edag.cli import cli
-from edag.cli import cli
 
 
 @pytest.fixture
