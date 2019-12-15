@@ -74,8 +74,14 @@ jobs:
           conda config --set anaconda_upload false
           conda config --set croot conda-bld
       - run: conda install conda-build conda-verify anaconda-client
-      - run: |
-          conda build .
-          conda build --output . | xargs conda server upload --private
+      - run: conda build .
+        env:
+          ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_API_TOKEN }}
+      - run: conda build --output . | xargs conda server upload --private
+        if: github.event.repository.private == true
+        env:
+          ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_API_TOKEN }}
+      - run: conda build --output . | xargs conda server upload
+        if: github.event.repository.private == false
         env:
           ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_API_TOKEN }}
