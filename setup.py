@@ -71,7 +71,7 @@ if "CONDA_BUILD_STATE" in os.environ:
         del setup_kwargs["use_scm_version"]
     except ModuleNotFoundError:
         print(
-            "Error: edag-cli requires that setuptools_scm be installed with conda-build!"
+            "Error: edag-cli requires that setuptools_scm be installed with conda-build!"  # noqa: E501
         )
         raise
 setup(**setup_kwargs)
