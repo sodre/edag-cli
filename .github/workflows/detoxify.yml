@@ -3,7 +3,7 @@ on: [push]
 jobs:
   enforcer:
     runs-on: ubuntu-latest
-    name: black, flake8 & coverage
+    name: black & flake8
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-python@v1.1.1
@@ -14,7 +14,7 @@ jobs:
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-py3.8-pip-${{ hashFiles('setup.py') }}
-      - run: pip install black flake8 codacy-coverage
+      - run: pip install black flake8
       - run: black --check .
       - run: flake8
   serverless-tox:
@@ -39,3 +39,4 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: unit-tests
+          fail_ci_if_error: true
