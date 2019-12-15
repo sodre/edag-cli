@@ -67,7 +67,7 @@ if "CONDA_BUILD_STATE" in os.environ:
     try:
         from setuptools_scm import get_version
 
-        setup_kwargs["version"] = get_version(**setup_kargs["use_scm_version"])
+        setup_kwargs["version"] = get_version(**setup_kwargs["use_scm_version"])
         del setup_kwargs["use_scm_version"]
     except ModuleNotFoundError:
         print(
