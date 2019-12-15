@@ -38,5 +38,7 @@ jobs:
       - uses: codecov/codecov-action@v1
         with:
           name: ${{  matrix.os }}-py${{ matrix.python-version }}
-          token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
+          file: ./coverage.xml
+          yml: .github/codecov.yml
+          token: ${{ secrets.CODECOV_TOKEN }}
