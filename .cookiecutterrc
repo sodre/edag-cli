@@ -1,0 +1,19 @@
+{
+    "_template": "gh:sodre/cookiecutter-pypackage",
+    "add_pyup_badge": "y",
+    "anaconda_organization": "elasticdag",
+    "command_line_interface": "Click",
+    "email": "sodre@elasticdag.com",
+    "full_name": "Patrick Sodr\u00e9",
+    "github_organization": "sodre",
+    "github_username": "sodre",
+    "noarch_python": "y",
+    "open_source_license": "BSD",
+    "project_name": "ElasticDAG CLI",
+    "project_namespace": "edag",
+    "project_repo": "edag-cli",
+    "project_short_description": "ElasticDAG CLI is the entry point for all of ElasticDAG tools.",
+    "project_slug": "cli",
+    "use_pytest": "y",
+    "version": "0.0.0"
+}
