@@ -16,13 +16,10 @@ ElasticDAG CLI
    :target: https://github.com/psf/black
 
 
-.. image:: https://img.shields.io/pypi/v/edag-cli.svg
+.. image:: https://img.shields.io/pypi/v/edag-cli.svg?style=flat-square
    :target: https://pypi.python.org/pypi/edag-cli
 
-.. image:: https://img.shields.io/travis/sodre/edag-cli.svg
-   :target: https://travis-ci.org/sodre/edag-cli
-
-.. image:: https://readthedocs.org/projects/edag-cli/badge/?version=latest
+.. image:: https://readthedocs.org/projects/edag-cli/badge/?version=latest&style=flat-square
    :target: https://edag-cli.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
 
