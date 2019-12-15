@@ -2,6 +2,9 @@
 EDAG Command Line Interface
 ===========================
 
+.. image:: https://img.shields.io/conda/v/elasticdag/edag-cli?style=flat-square
+   :target: https://anaconda.org/elasticdag/edag-cli
+
 .. image:: https://img.shields.io/codacy/grade/CODACY_PROJECT_ID_HERE?logo=codacy&style=flat-square
    :target: https://www.codacy.com/app/elasticdag/edag-cli
    :alt: Codacy Badge

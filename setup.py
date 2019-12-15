@@ -26,7 +26,7 @@ test_requirements = [
     "pytest-cov",
 ]
 
-setup_kwargs=dict(
+setup_kwargs = dict(
     author="Patrick Sodré",
     author_email="sodre@elasticdag.com",
     use_scm_version={"write_to": "edag/cli/_version.py"},
@@ -63,13 +63,15 @@ setup_kwargs=dict(
     url="https://github.com/sodre/cli",
     zip_safe=False,
 )
-#import pdb; pdb.set_trace()
-if 'CONDA_BUILD_STATE' in os.environ:
+if "CONDA_BUILD_STATE" in os.environ:
     try:
         from setuptools_scm import get_version
-        setup_kwargs['version'] = get_version(**setup_kwargs['use_scm_version'])
-        del(setup_kwargs['use_scm_version'])
+
+        setup_kwargs["version"] = get_version(**setup_kargs["use_scm_version"])
+        del(setup_kwargs["use_scm_version"])
     except ModuleNotFoundError:
-        print('Error: setuptools_scm must be installed in the same environment as conda-build')
+        print(
+            "Error: edag-cli requires that setuptools_scm be installed with conda-build!"
+        )
         raise
 setup(**setup_kwargs)
