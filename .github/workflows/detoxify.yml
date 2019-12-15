@@ -17,7 +17,7 @@ jobs:
           key: ${{ runner.os }}-py3.8-pip-${{ hashFiles('setup.py') }}
       - run: pip install black flake8 codacy-coverage
       - run: black --check .
-      - run: flake8 .
+      - run: flake8
       # TODO: This call should be to finalize the coverage report only.
       - run: python setup.py test
       - run: python-codacy-coverage -r coverage.xml
