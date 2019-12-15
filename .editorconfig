@@ -13,7 +13,7 @@ end_of_line = lf
 [*.yaml]
 indent_size = 2
 
-t[*.yml]
+[*.yml]
 indent_size = 2
 
 [*.bat]
