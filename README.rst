@@ -2,13 +2,17 @@
 ElasticDAG CLI
 ==============
 
+.. image:: https://img.shields.io/github/workflow/status/sodre/edag-cli/pypa-conda?label=pypa-conda&logo=github&style=flat-square
+   :target: https://github.com/sodre/edag-cli/actions?query=workflow%3Apypa-conda
+
 .. image:: https://img.shields.io/conda/v/elasticdag/edag-cli?logo=anaconda&style=flat-square
    :target: https://anaconda.org/elasticdag/edag-cli
 
-.. image:: https://img.shields.io/codecov/c/gh/sodre/edag-cli?logo=codecov&style=flat-square
-  :target: https://codecov.io/gh/sodre/edag-cli
 
-.. image:: https://img.shields.io/codacy/grade/CODACY_PROJECT_ID_HERE?logo=codacy&style=flat-square
+.. image:: https://img.shields.io/codecov/c/gh/sodre/edag-cli?logo=codecov&style=flat-square
+   :target: https://codecov.io/gh/sodre/edag-cli
+
+.. image:: https://img.shields.io/codacy/grade/CODACY_BADGE_TOKEN?logo=codacy&style=flat-square
    :target: https://www.codacy.com/app/sodre/edag-cli
    :alt: Codacy Badge
 
@@ -16,20 +20,17 @@ ElasticDAG CLI
    :target: https://github.com/psf/black
 
 
-.. image:: https://img.shields.io/pypi/v/edag-cli.svg
+.. image:: https://img.shields.io/pypi/v/edag-cli?logo=pypi&style=flat-square
    :target: https://pypi.python.org/pypi/edag-cli
 
-.. image:: https://img.shields.io/travis/sodre/edag-cli.svg
-   :target: https://travis-ci.org/sodre/edag-cli
-
-.. image:: https://readthedocs.org/projects/edag-cli/badge/?version=latest
+.. image:: https://readthedocs.org/projects/edag-cli/badge/?version=latest&style=flat-square
    :target: https://edag-cli.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
 
 
 
 
-ElasticDAG CLI is the entry point for all of ElasticDAG tools.
+The CLI entrypoint for *all* ElasticDAG Tools
 
 
 * Free software: BSD
@@ -41,10 +42,10 @@ Features
 
 * TODO
 
-Credits
+
 -------
 
-This package was created with Cookiecutter_ and the `sodre/cookiecutter-pypackage`_ project template.
+This package was created with ght-render_ and the `sodre/ght-pypackage`_ project template.
 
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`sodre/cookiecutter-pypackage`: https://github.com/sodre/cookiecutter-pypackage
+.. _ght-render: https://github.com/sodre/action-ght-render
+.. _`sodre/ght-pypackage`: https://github.com/sodre/ght-pypackage

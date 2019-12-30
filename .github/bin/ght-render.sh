@@ -87,7 +87,7 @@ render_tree_content()
             echo "rendering ${in}"
             render $in $out
             cp -a ${out} ${in}
-            git add ${in} || true
+            git add ${in}
         done
     #git commit -m 'ght: content rendered'
 }

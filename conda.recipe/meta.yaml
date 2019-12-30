@@ -1,5 +1,6 @@
 
 {% set data = load_setup_py_data() %}
+{% set rosetta = data["conda_rosetta_stone"] %}
 
 package:
   name: edag-cli
@@ -16,8 +17,13 @@ build:
   # "skip: True  # [not win]" to limit to Windows.
   script: {{ PYTHON }} -m pip install --no-deps --ignore-installed -vv .
   noarch: python
-  
-  
+  {%- if 'entry_points' in data and 'console_scripts' in data['entry_points'] %}
+  entry_points:
+    {% for entry in data['entry_points']['console_scripts'] %}
+      {%- set kv = entry.split('=') %}
+      - {{ kv[0].strip() }} = {{ kv[1].strip() }}
+    {% endfor %}
+  {%- endif %}
 
 requirements:
   # if you need compilers, uncomment these
@@ -28,32 +34,35 @@ requirements:
     - python {{ data['python_requires'] }}
     - pip
     {% for dep in data['setup_requires'] %}
-    - {{ dep.lower() }}
+    - {{ rosetta.get(dep, dep).lower() }}
     {% endfor %}
     {# raw is for ignoring templating with cookiecutter, leaving it for use with conda-build #}
   run:
     - python
     # dependencies are defined in setup.py
     {% for dep in data['install_requires'] %}
-    - {{ dep.lower() }}
+    - {{ rosetta.get(dep, dep).lower() }}
     {% endfor %}
 
 test:
   source_files:
     - tests
   requires:
-    - pytest
-    - pytest-cov
     # dependencies are defined in setup.py
     {% for dep in data['tests_require'] %}
-    - {{ dep.lower() }}
+    - {{ rosetta.get(dep, dep).lower() }}
     {% endfor %}
 
   commands:
+    {%- if 'entry_points' in data and 'console_scripts' in data['entry_points'] %}
+    {%- for entry in data['entry_points']['console_scripts'] %}
+    - {{ entry.split('=')[0].strip() }} --help
+    {%- endfor %}
+    {%- endif %}
     - pytest tests
 
 about:
   home: https://github.com/sodre/edag-cli
-  summary: ElasticDAG CLI is the entry point for all of ElasticDAG tools.
+  summary: The CLI entrypoint for *all* ElasticDAG Tools
   license: {{ data.get('license') }}
   license_file: LICENSE

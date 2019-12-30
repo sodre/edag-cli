@@ -1,7 +1,9 @@
+[run]
+source = edag
+
 [report]
 omit =
     setup.py
     edag/cli/__main__.py
     edag/cli/_version.py
-    versioneer.py
     tests/*

@@ -48,8 +48,8 @@ master_doc = "index"
 
 # General information about the project.
 project = "ElasticDAG CLI"
-copyright = "2019, Patrick Sodré"
-author = "Patrick Sodré"
+copyright = "2019, Patrick Sodr\u00e9"
+author = "Patrick Sodr\u00e9"
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
@@ -129,13 +129,15 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass
 # [howto, manual, or own class]).
 latex_documents = [
+    # fmt: off
     (
         master_doc,
         "cli.tex",
         "ElasticDAG CLI Documentation",
-        "Patrick Sodré",
+        "Patrick Sodr\u00e9",
         "manual",
     ),
+    # fmt: on
 ]
 
 
@@ -144,7 +146,15 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, "cli", "ElasticDAG CLI Documentation", [author], 1)
+    # fmt: off
+    (
+        master_doc,
+        "cli",
+        "ElasticDAG CLI Documentation",
+        [author],
+        1
+    )
+    # fmt: on
 ]
 
 
@@ -154,6 +164,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
+    # fmt: off
     (
         master_doc,
         "cli",
@@ -163,4 +174,5 @@ texinfo_documents = [
         "One line description of project.",
         "Miscellaneous",
     ),
+    # fmt: on
 ]
