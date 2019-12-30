@@ -39,7 +39,7 @@ conda_rosetta_stone = {
 }
 
 setup_kwargs = dict(
-    author="Patrick Sodr\u00e9",
+    author="Patrick Sodré",
     author_email="sodre@elasticdag.com",
     use_scm_version={"write_to": "edag/cli/_version.py"},
     python_requires=">=3.6",

@@ -48,8 +48,8 @@ master_doc = "index"
 
 # General information about the project.
 project = "ElasticDAG CLI"
-copyright = "2019, Patrick Sodr\u00e9"
-author = "Patrick Sodr\u00e9"
+copyright = "2019, Patrick Sodré"
+author = "Patrick Sodré"
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
@@ -134,7 +134,7 @@ latex_documents = [
         master_doc,
         "cli.tex",
         "ElasticDAG CLI Documentation",
-        "Patrick Sodr\u00e9",
+        "Patrick Sodré",
         "manual",
     ),
     # fmt: on
