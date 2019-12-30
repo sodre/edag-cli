@@ -1,14 +1,9 @@
 ---
 codecov:
-  #
-  # TODO: Place your codecov.io *BADGE* token here for private repositories
-  badge_token: CODECOV_BADGE_TOKEN
+  badge_token: None
 
 codacy:
-  #
-  # TODO: Place your CODACY Project Id here.
-  #       This is used for displaying your badge in public and private repos
-  project_id: CODACY_BADGE_TOKEN
+  project_id: 24d170f2b8504dbebf3031199c15ad38
 
 cookiecutter:
   command_line_interface: Click
@@ -34,7 +29,7 @@ cookiecutter:
 
   #
   # These should probably be left alone. They came from github
-  full_name: Patrick Sodr\u00e9
+  full_name: Patrick Sodré
   email: sodre@elasticdag.com
   github_username: sodre
   github_organization: sodre
