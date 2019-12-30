@@ -129,7 +129,15 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass
 # [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, "cli.tex", "ElasticDAG CLI Documentation", "Patrick Sodré", "manual",),
+    # fmt: off
+    (
+        master_doc,
+        "cli.tex",
+        "ElasticDAG CLI Documentation",
+        "Patrick Sodré",
+        "manual",
+    ),
+    # fmt: on
 ]
 
 
@@ -137,7 +145,17 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [(master_doc, "cli", "ElasticDAG CLI Documentation", [author], 1)]
+man_pages = [
+    # fmt: off
+    (
+        master_doc,
+        "cli",
+        "ElasticDAG CLI Documentation",
+        [author],
+        1
+    )
+    # fmt: on
+]
 
 
 # -- Options for Texinfo output ----------------------------------------
@@ -146,6 +164,7 @@ man_pages = [(master_doc, "cli", "ElasticDAG CLI Documentation", [author], 1)]
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
+    # fmt: off
     (
         master_doc,
         "cli",
@@ -155,4 +174,5 @@ texinfo_documents = [
         "One line description of project.",
         "Miscellaneous",
     ),
+    # fmt: on
 ]

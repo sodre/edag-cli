@@ -1,0 +1,37 @@
+---
+codecov:
+  badge_token: None
+
+codacy:
+  project_id: 24d170f2b8504dbebf3031199c15ad38
+
+cookiecutter:
+  command_line_interface: Click
+  open_source_license: BSD
+
+  #
+  # These were guess based on the repository information
+  # You probably want to customize them.
+  project_namespace: edag
+  project_slug: cli
+  project_name: ElasticDAG CLI
+
+  #
+  # These are likely correct...
+  anaconda_organization: elasticdag
+
+  #
+  # These should not be changed at the moment...
+  noarch_python: y
+  use_pytest: y
+  add_pyup_badge: y
+  version: 0.0.0
+
+  #
+  # These should probably be left alone. They came from github
+  full_name: Patrick Sodré
+  email: sodre@elasticdag.com
+  github_username: sodre
+  github_organization: sodre
+  project_repo: edag-cli
+  project_short_description: The CLI entrypoint for *all* ElasticDAG Tools
