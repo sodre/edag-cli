@@ -1,0 +1,42 @@
+---
+codecov:
+  #
+  # TODO: Place your codecov.io *BADGE* token here for private repositories
+  badge_token: CODECOV_BADGE_TOKEN
+
+codacy:
+  #
+  # TODO: Place your CODACY Project Id here.
+  #       This is used for displaying your badge in public and private repos
+  project_id: CODACY_BADGE_TOKEN
+
+cookiecutter:
+  command_line_interface: Click
+  open_source_license: BSD
+
+  #
+  # These were guess based on the repository information
+  # You probably want to customize them.
+  project_namespace: edag
+  project_slug: cli
+  project_name: ElasticDAG CLI
+
+  #
+  # These are likely correct...
+  anaconda_organization: elasticdag
+
+  #
+  # These should not be changed at the moment...
+  noarch_python: y
+  use_pytest: y
+  add_pyup_badge: y
+  version: 0.0.0
+
+  #
+  # These should probably be left alone. They came from github
+  full_name: Patrick Sodr\u00e9
+  email: sodre@elasticdag.com
+  github_username: sodre
+  github_organization: sodre
+  project_repo: edag-cli
+  project_short_description: The CLI entrypoint for *all* ElasticDAG Tools
