@@ -34,7 +34,7 @@ cookiecutter:
 
   #
   # These should probably be left alone. They came from github
-  full_name: Patrick Sodr\u00e9
+  full_name: Patrick Sodré
   email: sodre@elasticdag.com
   github_username: sodre
   github_organization: sodre
