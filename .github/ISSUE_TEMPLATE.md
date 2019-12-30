@@ -1,4 +1,4 @@
-* {{ cookiecutter.project_name }} version:
+* ElasticDAG CLI version:
 * Python version:
 * Operating System:
 

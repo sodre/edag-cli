@@ -12,7 +12,7 @@ ElasticDAG CLI
 .. image:: https://img.shields.io/codecov/c/gh/sodre/edag-cli?logo=codecov&style=flat-square
    :target: https://codecov.io/gh/sodre/edag-cli
 
-.. image:: https://img.shields.io/codacy/grade/CODACY_BADGE_TOKEN?logo=codacy&style=flat-square
+.. image:: https://img.shields.io/codacy/grade/24d170f2b8504dbebf3031199c15ad38?logo=codacy&style=flat-square
    :target: https://www.codacy.com/app/sodre/edag-cli
    :alt: Codacy Badge
 
