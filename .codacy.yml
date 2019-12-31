@@ -1,6 +1,6 @@
 ---
 exclude_paths:
-  - '.github/**'
+  - '.github/**/*'
   - 'edag/cli/_version.py'
   - 'tests/**/*'
   - 'tests/*'
